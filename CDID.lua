@@ -5,7 +5,7 @@ local Window = Rayfield:CreateWindow({
 	LoadingTitle = "Loading Cheat...",
 	LoadingSubtitle = "by ! Ly",
 	ConfigurationSaving = {
-		Enabled = true,
+		Enabled = false,
 		FolderName = nil,
 		FileName = "CDIDPrivateConfig"
 	},
@@ -35,8 +35,8 @@ local Slider = MainTab:CreateSlider({
 	Suffix = "Value",
 	CurrentValue = 16,
 	Flag = "Slider1",
-	Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+	Callback = function(w)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = w
 	end,
 })
 local Slider = MainTab:CreateSlider({
@@ -46,8 +46,8 @@ local Slider = MainTab:CreateSlider({
 	Suffix = "Value",
 	CurrentValue = 50,
 	Flag = "Slider1",
-	Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+	Callback = function(j)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = j
 	end,
 })
 local Button = MainTab:CreateButton({
@@ -156,6 +156,35 @@ local Toggle = ESPTab:CreateToggle({
 
 local TeleportTab = Window:CreateTab("Teleport", 4483362458)
 
+local Paragraph = TeleportTab:CreateParagraph({Title = "Player Teleport", Content = "[1]"})
+
+local plrs = {}
+    local selectedPlr
+     
+for _, v in next, game:GetService("Players"):GetPlayers() do
+    if v.Name ~= game.Players.LocalPlayer.Name then
+        table.insert(plrs, v.Name)
+    end
+end
+
+local Dropdown = TeleportTab:CreateDropdown({
+	Name = "Select Players",
+	Options = {"Option 1","Option 2"},
+	CurrentOption = "Option 1",
+	Flag = "Dropdown1",
+	Callback = function(Option)
+	end,
+})
+local Button = TeleportTab:CreateButton({
+	Name = "TP to Player",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+        game.Players[selectedPlr].Character.HumanoidRootPart.CFrame
+	end,
+})
+
+local Paragraph = TeleportTab:CreateParagraph({Title = "Normal Teleport", Content = "[2]"})
+
 local Button = TeleportTab:CreateButton({
 	Name = "Spawn",
 	Callback = function()
@@ -209,10 +238,10 @@ local Button = TeleportTab:CreateButton({
 	end,
 })
 local Button = TeleportTab:CreateButton({
-	Name = "",
+	Name = "Job Changer",
 	Callback = function()
         local teleport_table = {
-            location1 = Vector3.new(),
+            location1 = Vector3.new(-25204.1465, 23.3692799, 8623.30957, 0.999999762, 9.01753197e-08, -0.000690595421, -9.01600714e-08, 1, 2.21099885e-08, 0.000690595421, -2.20477201e-08, 0.999999762),
         }
         
         local tween_s = game:GetService('TweenService')
@@ -235,10 +264,10 @@ local Button = TeleportTab:CreateButton({
 	end,
 })
 local Button = TeleportTab:CreateButton({
-	Name = "",
+	Name = "Modification",
 	Callback = function()
         local teleport_table = {
-            location1 = Vector3.new(),
+            location1 = Vector3.new(-17283.9375, -14.4995031, 18840.0859, -0.507016718, -4.26286846e-08, -0.861936212, 4.39673116e-08, 1, -7.53197753e-08, 0.861936212, -7.60854064e-08, -0.507016718),
         }
         
         local tween_s = game:GetService('TweenService')
@@ -261,10 +290,10 @@ local Button = TeleportTab:CreateButton({
 	end,
 })
 local Button = TeleportTab:CreateButton({
-	Name = "",
+	Name = "Accessories",
 	Callback = function()
         local teleport_table = {
-            location1 = Vector3.new(),
+            location1 = Vector3.new(-15159.7695, -96.8301239, 29652.707, -0.256434649, 5.64273535e-08, 0.966561556, -3.09453405e-08, 1, -6.65894575e-08, -0.966561556, -4.69864219e-08, -0.256434649),
         }
         
         local tween_s = game:GetService('TweenService')
@@ -287,10 +316,10 @@ local Button = TeleportTab:CreateButton({
 	end,
 })
 local Button = TeleportTab:CreateButton({
-	Name = "",
+	Name = "Premium Dealership",
 	Callback = function()
         local teleport_table = {
-            location1 = Vector3.new(),
+            location1 = Vector3.new(-25489.3887, 26.1521072, 15257.7266, -0.256765902, 7.12753021e-08, 0.966473639, -1.40457095e-08, 1, -7.74793634e-08, -0.966473639, -3.3468865e-08, -0.256765902),
         }
         
         local tween_s = game:GetService('TweenService')
@@ -313,10 +342,36 @@ local Button = TeleportTab:CreateButton({
 	end,
 })
 local Button = TeleportTab:CreateButton({
-	Name = "",
+	Name = "Sumber Jaya Dealership",
 	Callback = function()
         local teleport_table = {
-            location1 = Vector3.new(),
+            location1 = Vector3.new(-12388.7363, 47.5271683, 1894.16541, -0.480136365, 1.14372201e-08, -0.877193868, -2.45105767e-08, 1, 2.64544013e-08, 0.877193868, 3.42022481e-08, -0.480136365),
+        }
+        
+        local tween_s = game:GetService('TweenService')
+        local tweeninfo = TweenInfo.new(3,Enum.EasingStyle.Linear)
+        
+        local lp = game.Players.LocalPlayer
+        
+        function bypass_teleport(v)
+            if lp.Character and 
+            lp.Character:FindFirstChild('HumanoidRootPart') then
+                local cf = CFrame.new(v)
+                local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
+                a:Play()
+                -- a.Completed:Wait()
+                -- print('Teleporting Done!')
+            end
+        end
+        
+        bypass_teleport(teleport_table.location1)
+	end,
+})
+local Button = TeleportTab:CreateButton({
+	Name = "Daihatsu Dealership",
+	Callback = function()
+        local teleport_table = {
+            location1 = Vector3.new(-15225.1602, -97.5758591, 30088.6719, 0.965309501, -3.04275289e-08, 0.261108309, 9.87720306e-09, 1, 8.00164841e-08, -0.261108309, -7.46616564e-08, 0.965309501),
         }
         
         local tween_s = game:GetService('TweenService')
@@ -468,6 +523,36 @@ local Button = TeleportTab:CreateButton({
         bypass_teleport(teleport_table.location1)
 	end,
 })
+
+local MiscTab = Window:CreateTab("Misc", 4483362458)
+
+local Button = MiscTab:CreateButton({
+	Name = "Destroy GUI",
+	Callback = function()
+        Rayfield:Destroy()
+	end,
+})
+local Button = MiscTab:CreateButton({
+	Name = "Remove Textures",
+	Callback = function()
+        for _, v in next, workspace:GetDescendants() do
+            if v.ClassName == "Decal" then
+                v:Destroy()
+            end
+        end
+	end,
+})
+local Button = MiscTab:CreateButton({
+	Name = "Headless",
+	Callback = function()
+        game.Players.LocalPlayer.Character.Head.Transparency = 1
+	end,
+})
+
+
+
+
+
 
 local MetamethodHolder = {
     AntiFlag = nil
