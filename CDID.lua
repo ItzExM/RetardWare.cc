@@ -1,5 +1,3 @@
-if game.ServerID == 706511299838351
-repeat wait() until game:IsLoaded()
 getgenv().SecureMode = true
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 local Window = Rayfield:CreateWindow({
