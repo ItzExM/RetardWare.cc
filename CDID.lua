@@ -40,7 +40,7 @@ local Slider = MainTab:CreateSlider({
 	end,
 })
 local Slider = MainTab:CreateSlider({
-	Name = "Jump-Power [Do Not Press Shift]",
+	Name = "Jump-Power",
 	Range = {50, 1000},
 	Increment = 1,
 	Suffix = "Value",
@@ -205,7 +205,7 @@ local Button = TeleportTab:CreateButton({
 	end,
 })
 
-local Paragraph = TeleportTab:CreateParagraph({Title = "Normal Teleport", Content = "[2]"})
+local Paragraph = TeleportTab:CreateParagraph({Title = "Normal Teleport", Content = "[2] [Working]"})
 
 local Button = TeleportTab:CreateButton({
 	Name = "Spawn",
@@ -549,9 +549,9 @@ local Button = TeleportTab:CreateButton({
 local MiscTab = Window:CreateTab("Misc", 4483362458)
 
 local Button = MiscTab:CreateButton({
-	Name = "Destroy GUI",
+	Name = "Headless [Not FE]",
 	Callback = function()
-        Rayfield:Destroy()
+        game.Players.LocalPlayer.Character.Head.Transparency = 1
 	end,
 })
 local Button = MiscTab:CreateButton({
@@ -565,9 +565,9 @@ local Button = MiscTab:CreateButton({
 	end,
 })
 local Button = MiscTab:CreateButton({
-	Name = "Headless",
+	Name = "Destroy GUI",
 	Callback = function()
-        game.Players.LocalPlayer.Character.Head.Transparency = 1
+        Rayfield:Destroy()
 	end,
 })
 
