@@ -14,7 +14,7 @@ local Window = Rayfield:CreateWindow({
         	Invite = "",
         	RememberJoins = false
         },
-	KeySystem = false,
+	KeySystem = true,
 	KeySettings = {
 		Title = "CDID Private",
 		Subtitle = "Key System",
