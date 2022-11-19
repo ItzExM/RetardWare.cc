@@ -3,5 +3,5 @@ local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/
 
 Notification:Notify(
     {Title = "Notice", Description = "Script not ready!"},
-    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 15, Type = "default"}
+    {OutlineColor = Color3.fromRGB(80, 80, 80),Time = 6.5, Type = "default"}
 )
