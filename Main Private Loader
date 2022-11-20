@@ -17,5 +17,5 @@ elseif game.PlaceId == 1962086868 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/TheAlmightyChipZ/Private/main/TOH.lua", true))()
 -- Unsupported Games
 else
-    game:GetService("Players").LocalPlayer:Kick("No Game Support.")
+    game:GetService("Players").LocalPlayer:Kick("RetardWare.cc no game support.")
 end
